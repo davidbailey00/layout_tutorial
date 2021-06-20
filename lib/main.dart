@@ -33,13 +33,50 @@ class MyApp extends StatelessWidget {
       ]),
     );
 
+    Color color = Theme.of(context).primaryColor;
+
+    Widget buttonSection = Container(
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          _buildButtonColumn(color, Icons.call, 'Call'),
+          _buildButtonColumn(color, Icons.near_me, 'Route'),
+          _buildButtonColumn(color, Icons.share, 'Share'),
+        ],
+      ),
+    );
+
     return MaterialApp(
       title: 'Flutter layout demo',
       home: Scaffold(
         appBar: AppBar(
           title: const Text('Flutter layout demo'),
         ),
-        body: Column(children: [titleSection]),
+        body: Column(children: [
+          titleSection,
+          buttonSection,
+        ]),
+      ),
+    );
+  }
+
+  TextButton _buildButtonColumn(Color color, IconData icon, String label) {
+    return TextButton(
+      onPressed: () {
+        // @TODO
+      },
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Icon(icon, color: color),
+          SizedBox(height: 8),
+          Text(
+            label.toUpperCase(),
+            semanticsLabel: label,
+            style: TextStyle(fontSize: 12, color: color),
+          )
+        ],
       ),
     );
   }
