@@ -1,4 +1,4 @@
-package com.example.layout_tutorial
+package co.zimly.layout_tutorial
 
 import io.flutter.embedding.android.FlutterActivity
 

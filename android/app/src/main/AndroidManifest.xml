@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.layout_tutorial">
+    package="co.zimly.layout_tutorial">
    <application
         android:label="layout_tutorial"
         android:icon="@mipmap/ic_launcher">
