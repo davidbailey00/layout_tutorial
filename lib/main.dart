@@ -33,15 +33,13 @@ class MyApp extends StatelessWidget {
       ]),
     );
 
-    Color color = Theme.of(context).primaryColor;
-
     Widget buttonSection = Container(
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          _buildButtonColumn(color, Icons.call, 'Call'),
-          _buildButtonColumn(color, Icons.near_me, 'Route'),
-          _buildButtonColumn(color, Icons.share, 'Share'),
+          ColumnButton(icon: Icons.call, label: 'Call'),
+          ColumnButton(icon: Icons.near_me, label: 'Route'),
+          ColumnButton(icon: Icons.share, label: 'Share'),
         ],
       ),
     );
@@ -79,11 +77,22 @@ class MyApp extends StatelessWidget {
       ),
     );
   }
+}
 
-  TextButton _buildButtonColumn(Color color, IconData icon, String label) {
+class ColumnButton extends StatelessWidget {
+  ColumnButton({required this.icon, required this.label});
+
+  final IconData icon;
+  final String label;
+
+  @override
+  Widget build(BuildContext context) {
+    Color color = Theme.of(context).primaryColor;
+
     return TextButton(
       onPressed: () {
-        // @TODO
+        final snackBar = SnackBar(content: Text('Unimplemented'));
+        ScaffoldMessenger.of(context).showSnackBar(snackBar);
       },
       child: Column(
         mainAxisSize: MainAxisSize.min,
