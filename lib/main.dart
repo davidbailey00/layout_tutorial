@@ -103,16 +103,14 @@ class _FavoriteWidgetState extends State<FavoriteWidget> {
         IconButton(
           icon: _isFavorited
               ? Icon(Icons.star, semanticLabel: 'Remove from favorites')
-              : Icon(Icons.star_border, semanticLabel: 'Favorite'),
+              : Icon(Icons.star_border, semanticLabel: 'Add to favorites'),
           color: Colors.red[500],
           onPressed: _toggleFavorite,
         ),
-        Container(
-          child: Text(
-            '$_favoriteCount',
-            semanticsLabel: '$_favoriteCount favorites',
-            style: TextStyle(color: _isFavorited ? Colors.red[500] : null),
-          ),
+        Text(
+          '$_favoriteCount',
+          semanticsLabel: '$_favoriteCount favorites',
+          style: TextStyle(color: _isFavorited ? Colors.red[500] : null),
         ),
       ],
     );
