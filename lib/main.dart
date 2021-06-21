@@ -24,12 +24,7 @@ class MyApp extends StatelessWidget {
             ],
           ),
         ),
-        MergeSemantics(
-          child: Row(children: [
-            Icon(Icons.star, color: Colors.red[500]),
-            Text('41', semanticsLabel: '41 stars'),
-          ]),
-        ),
+        FavoriteWidget(),
       ]),
     );
 
@@ -73,8 +68,53 @@ class MyApp extends StatelessWidget {
           titleSection,
           buttonSection,
           textSection,
-        ]),
+        ], addSemanticIndexes: false),
       ),
+    );
+  }
+}
+
+class FavoriteWidget extends StatefulWidget {
+  @override
+  _FavoriteWidgetState createState() => _FavoriteWidgetState();
+}
+
+class _FavoriteWidgetState extends State<FavoriteWidget> {
+  bool _isFavorited = true;
+  int _favoriteCount = 41;
+
+  void _toggleFavorite() {
+    setState(() {
+      if (_isFavorited) {
+        _favoriteCount -= 1;
+        _isFavorited = false;
+      } else {
+        _favoriteCount += 1;
+        _isFavorited = true;
+      }
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        IconButton(
+          icon: _isFavorited
+              ? Icon(Icons.star, semanticLabel: 'Remove from favorites')
+              : Icon(Icons.star_border, semanticLabel: 'Favorite'),
+          color: Colors.red[500],
+          onPressed: _toggleFavorite,
+        ),
+        Container(
+          child: Text(
+            '$_favoriteCount',
+            semanticsLabel: '$_favoriteCount favorites',
+            style: TextStyle(color: _isFavorited ? Colors.red[500] : null),
+          ),
+        ),
+      ],
     );
   }
 }
