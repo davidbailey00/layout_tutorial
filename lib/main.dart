@@ -101,10 +101,9 @@ class _FavoriteWidgetState extends State<FavoriteWidget> {
       mainAxisSize: MainAxisSize.min,
       children: [
         IconButton(
-          icon: _isFavorited
-              ? Icon(Icons.star, semanticLabel: 'Remove from favorites')
-              : Icon(Icons.star_border, semanticLabel: 'Add to favorites'),
+          icon: _isFavorited ? Icon(Icons.star) : Icon(Icons.star_border),
           color: Colors.red[500],
+          tooltip: _isFavorited ? 'Remove from favorites' : 'Add to favorites',
           onPressed: _toggleFavorite,
         ),
         Text(
